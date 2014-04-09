@@ -220,7 +220,7 @@ int npcdmod_handle_data(int event_type, void *data) {
                         hostchkdata->host_name,
                         hoststate[hostchkdata->state],
                         hostchkdata->output,
-                        hostchkdata->long_output,
+                        hostchkdata->perf_data,
                         (int)hostchkdata->timestamp.tv_sec);
 
                 if (written >= PERFDATA_BUFFER) {
@@ -263,7 +263,7 @@ int npcdmod_handle_data(int event_type, void *data) {
                     //"\"time\":\"%f\","      // HOSTEXECUTIONTIME
                     //"\"time\":\"%f\","      // HOSTLATENCY
                     "\"summary\":\"%s\","   // HOSTOUTPUT
-                    "\"details\":\"%s\","   // HOSTlongoutput
+                    "\"details\":\"%s\","   // HOST perf_data
                     "\"time\":\"%d\""       // TIMET
                     "}",
                         srvchkdata->host_name,
@@ -272,7 +272,7 @@ int npcdmod_handle_data(int event_type, void *data) {
                         //srvchkdata->execution_time,
                         //srvchkdata->latency,
                         srvchkdata->output,
-                        srvchkdata->long_output,
+                        srvchkdata->perf_data,
                         (int)srvchkdata->timestamp.tv_sec);
 
                 if (written >= PERFDATA_BUFFER) {
